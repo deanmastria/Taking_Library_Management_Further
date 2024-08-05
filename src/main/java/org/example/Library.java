@@ -11,39 +11,30 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-/**
- * The Library class manages a collection of books and registered users.
- */
+// The Library class manages a collection of books and registered users.
 public class Library {
     private List<Book> books;
     private List<User> users;
 
-    /**
-     * Constructor to initialize a Library object.
-     */
+    // Constructor to initialize a Library object.
     public Library() {
         this.books = new ArrayList<>();
         this.users = new ArrayList<>();
     }
 
-    /**
-     * Adds a book to the library's collection.
-     */
+    // Adds a book to the library's collection.
     public void addBook(Book book) {
         books.add(book);
     }
 
-    /**
-     * Removes a book from the library by its title.
-     */
+    // Removes a book from the library by its title.
     public void removeBook(String title) {
         Predicate<Book> titlePredicate = book -> book.getTitle().equalsIgnoreCase(title);
         books.removeIf(titlePredicate);
     }
 
-    /**
-     * Finds all books published in a specific year.
-     */
+    // Finds all books published in a specific year.
+
     public List<Book> findBooksByYear(int year) {
         Predicate<Book> yearPredicate = book -> book.getPublicationYear() == year;
         return books.stream()
@@ -51,9 +42,8 @@ public class Library {
                 .collect(Collectors.toList());
     }
 
-    /**
-     * Finds all books by a specific author.
-     */
+    // Finds all books by a specific author.
+
     public List<Book> findBooksByAuthor(String author) {
         Predicate<Book> authorPredicate = book -> book.getAuthor().equalsIgnoreCase(author);
         return books.stream()
@@ -61,17 +51,13 @@ public class Library {
                 .collect(Collectors.toList());
     }
 
-    /**
-     * Finds the book with the most pages.
-     */
+    // Finds the book with the most pages.
     public Optional<Book> findBookWithMostPages() {
         return books.stream()
                 .max(Comparator.comparingInt(Book::getPages));
     }
 
-    /**
-     * Finds all books with more than a specified number of pages.
-     */
+    // Finds all books with more than a specified number of pages.
     public List<Book> findBooksWithMoreThanNPages(int n) {
         Predicate<Book> pagesPredicate = book -> book.getPages() > n;
         return books.stream()
@@ -79,9 +65,7 @@ public class Library {
                 .collect(Collectors.toList());
     }
 
-    /**
-     * Retrieves all book titles in the library, sorted alphabetically.
-     */
+    // Retrieves all book titles in the library, sorted alphabetically.
     public List<String> getAllBookTitles() {
         Function<Book, String> titleFunction = Book::getTitle;
         return books.stream()
@@ -90,9 +74,7 @@ public class Library {
                 .collect(Collectors.toList());
     }
 
-    /**
-     * Finds all books in a specific category.
-     */
+    // Finds all books in a specific category.
     public List<Book> findBooksByCategory(String category) {
         Predicate<Book> categoryPredicate = book -> book.getCategory().equalsIgnoreCase(category);
         return books.stream()
@@ -100,9 +82,7 @@ public class Library {
                 .collect(Collectors.toList());
     }
 
-    /**
-     * Loans out a book to a user if the book is not already on loan.
-     */
+    // Loans out a book to a user if the book is not already on loan.
     public boolean loanBook(String title, String userName) {
         Predicate<Book> bookPredicate = book -> book.getTitle().equalsIgnoreCase(title) && !book.isOnLoan();
         Optional<Book> bookOpt = books.stream()
@@ -124,9 +104,7 @@ public class Library {
         return false;
     }
 
-    /**
-     * Returns a book from a user if the book is currently on loan.
-     */
+    // Returns a book from a user if the book is currently on loan.
     public boolean returnBook(String title, String userName) {
         Predicate<Book> bookPredicate = book -> book.getTitle().equalsIgnoreCase(title) && book.isOnLoan();
         Optional<Book> bookOpt = books.stream()
@@ -148,9 +126,7 @@ public class Library {
         return false;
     }
 
-    /**
-     * Registers a new user with the library.
-     */
+    // Registers a new user with the library.
     public void registerUser(User user) {
         users.add(user);
     }
