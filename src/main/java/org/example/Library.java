@@ -155,9 +155,7 @@ public class Library {
         users.add(user);
     }
 
-    /**
-     * Calculates late fees for a user based on overdue books.
-     */
+    // Calculates late fees for a user based on overdue books.
     public double calculateLateFees(User user) {
         double lateFee = 0.00;
         Predicate<Book> overduePredicate = book -> {
@@ -175,9 +173,7 @@ public class Library {
         return lateFee;
     }
 
-    /**
-     * Processes each book in the library using a Consumer.
-     */
+    // Processes each book in the library using a Consumer.
     public void processBooks(Consumer<Book> bookConsumer) {
         books.forEach(bookConsumer);
     }

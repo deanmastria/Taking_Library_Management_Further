@@ -2,9 +2,7 @@ package org.example;
 
 import java.time.LocalDate;
 
-/**
- * The Book class represents a book with its details and loan status.
- */
+// The Book class represents a book with its details and loan status.
 public class Book {
     private String title;
     private String author;
@@ -14,9 +12,7 @@ public class Book {
     private boolean isOnLoan;
     private LocalDate loanDate;
 
-    /**
-     * Constructor to initialize a Book object.
-     */
+    // Constructor to initialize a Book object.
     public Book(String title, String author, int publicationYear, int pages, String category) {
         this.title = title;
         this.author = author;
@@ -80,17 +76,13 @@ public class Book {
         this.loanDate = loanDate;
     }
 
-    /**
-     * Marks the book as on loan and sets the loan date to today.
-     */
+    // Marks the book as on loan and sets the loan date to today.
     public void loanBook() {
         this.isOnLoan = true;
         this.loanDate = LocalDate.now();
     }
 
-    /**
-     * Marks the book as returned and clears the loan date.
-     */
+    // Marks the book as returned and clears the loan date.
     public void returnBook() {
         this.isOnLoan = false;
         this.loanDate = null;
